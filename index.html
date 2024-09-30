@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Video</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-white font-mono text-[12pt] leading-[10pt] flex items-center justify-center flex-col min-h-screen max-w-screen">
+    <div>
+        <h1 class="text-3xl font-bold mb-4">Video to ASCII Generator</h1>
+    </div>
+    <div class="container bg-gray-800 rounded-lg shadow-lg text-center p-4 max-w-screen">
+        <div>
+            <canvas id="canvas" width=125" height="25" class="hidden"></canvas>
+            <video id="localVideo" width="200" height="100" class="hidden"></video>
+        </div>
+        <div class="mt-4">
+            <label for="grayscaleMethod" class="block">Grayscale Method:</label>
+            <select id="grayscaleMethod" class="px-2 py-1 bg-gray-900 border border-gray-600 rounded">
+                <option value="average">Average</option>
+                <option value="luminance">Luminance</option>
+                <option value="weighted">Weighted Average</option>
+                <option value="max">Max</option>
+                <option value="min">Min</option>
+            </select>
+        </div>
+        
+        <div class="mt-4">
+            <label for="densityInput" class="block">Density Characters:</label>
+            <input type="text" id="densityInput" class="px-2 py-1 bg-gray-900 border border-gray-600 rounded" value="Ñ@#W$9876543210?!abc;:+=-,_. ">
+            <button id="reverseButton" class="mt-4 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition duration-300">Reverse</button>
+
+        </div>
+        <div class="mt-4">
+            <label for="localVideoSource" class="block">Video Source:</label>
+            <input type="file" id="localVideoSource" class="px-2 py-1 bg-gray-900 border border-gray-600 rounded" accept="video/mp4,video/x-m4v,video/*">
+            <button id="loadDefaultButton" class="mt-2 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition duration-300">Load Default Video</button>
+            <button id="useWebcamButton" class="mt-2 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition duration-300">Use Webcam</button>
+        </div>
+        <div class="mt-4 flex gap-4 justify-center">
+            <label for="canvasWidth" class="block">Canvas Width:</label>
+            <input type="number" id="canvasWidth" class="px-2 py-1 bg-gray-900 border border-gray-600 rounded" value="125">
+            <label for="canvasHeight" class="block">Canvas Height:</label>
+            <input type="number" id="canvasHeight" class="px-2 py-1 bg-gray-900 border border-gray-600 rounded" value="25">
+        </div>
+        <button id="playButton" class="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition duration-300">Play</button>
+        <button id="resetButton" class="mt-4 px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-300">Reset</button>
+    </div>
+    
+   
+    <div id="asciiDiv" class="mt-4 bg-gray-900 p-5 rounded-md border border-gray-600 max-w-screen flex items-center justify-center text-center overflow-x-auto">
+        <pre class="p-4 bg-gray-800 text-white rounded-md text-left">
+<span class="text-blue-400">GreyScale method :</span> RGB formula for greyscale<br>
+<span class="text-blue-400">Density :</span> ASCII character used in video<br>
+<span class="text-blue-400">Video Source :</span> Video or Webcam<br>
+<span class="text-blue-400">Canvas :</span> Make sure to insert right value
+        </pre>
+    </div>
+    
+    
+    <script src="script.js"></script>
+</body>
+</html>
